@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package tasks;
+
+// Definición del servicio de tareas
+// Este servicio proporciona operaciones CRUD completas para gestionar tareas
+service TaskService {
+  // Create - Crear una nueva tarea
+  rpc CreateTask (CreateTaskRequest) returns (TaskResponse);
+  
+  // Read - Obtener una tarea por ID
+  rpc GetTask (GetTaskRequest) returns (TaskResponse);
+  
+  // Read - Listar todas las tareas
+  rpc ListTasks (ListTasksRequest) returns (ListTasksResponse);
+  
+  // Update - Actualizar una tarea existente
+  rpc UpdateTask (UpdateTaskRequest) returns (TaskResponse);
+  
+  // Delete - Eliminar una tarea
+  rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse);
+}
+
+// Modelo de datos de una tarea
+// Contiene solo los campos esenciales: id, título y descripción
+message Task {
+  string id = 1;           // Identificador único de la tarea
+  string title = 2;        // Título de la tarea
+  string description = 3;  // Descripción detallada de la tarea
+}
+
+// Mensajes de petición
+
+// Petición para crear una nueva tarea
+message CreateTaskRequest {
+  string title = 1;        // Título de la nueva tarea (requerido)
+  string description = 2;  // Descripción de la nueva tarea (opcional)
+}
+
+// Petición para obtener una tarea específica
+message GetTaskRequest {
+  string id = 1;  // ID de la tarea a obtener
+}
+
+// Petición para listar todas las tareas
+message ListTasksRequest {
+  // Vacío por ahora, podría incluir paginación en el futuro
+}
+
+// Petición para actualizar una tarea existente
+message UpdateTaskRequest {
+  string id = 1;           // ID de la tarea a actualizar
+  string title = 2;        // Nuevo título
+  string description = 3;  // Nueva descripción
+}
+
+// Petición para eliminar una tarea
+message DeleteTaskRequest {
+  string id = 1;  // ID de la tarea a eliminar
+}
+
+// Mensajes de respuesta
+
+// Respuesta que contiene una tarea y posible error
+message TaskResponse {
+  Task task = 1;    // La tarea solicitada o creada
+  string error = 2; // Mensaje de error si algo salió mal
+}
+
+// Respuesta que contiene una lista de tareas
+message ListTasksResponse {
+  repeated Task tasks = 1;  // Array de todas las tareas
+}
+
+// Respuesta de operación de eliminación
+message DeleteTaskResponse {
+  bool success = 1;    // Indica si la eliminación fue exitosa
+  string message = 2;  // Mensaje descriptivo del resultado
+}

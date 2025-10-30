@@ -1,0 +1,36 @@
+{
+  "name": "grpc-crud-practice",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "grpc:server": "tsx scripts/start-grpc-server.ts",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "latest",
+    "@grpc/proto-loader": "latest",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "crypto": "latest",
+    "lucide-react": "^0.454.0",
+    "next": "16.0.0",
+    "path": "latest",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "swr": "^2.2.5",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "postcss": "^8.5",
+    "tailwindcss": "4.1.15",
+    "tsx": "^4.19.2",
+    "typescript": "^5"
+  }
+}
